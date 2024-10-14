@@ -6,7 +6,7 @@ output:
   pdf_document: default
   html_document: default
 ---
-Enunciado Problema 1:
+###Enunciado Problema 1:
 Una empresa de desarrollo de videojuegos está considerando lanzar un nuevo juego al mercado. El juego puede enfocarse en cuatro géneros distintos: un RPG de mundo abierto, un shooter multijugador, un juego de estrategia por turnos y un juego deportivo. Los beneficios esperados, en millones de euros en el año siguiente al lanzamiento, dependiendo de las condiciones del mercado, son las siguientes:
 
 ```{r}
@@ -169,6 +169,35 @@ criterio.Todos(tb01b,0.4,F)
 Después de realizar todos los criterios, vemos como claramente el videojuego que más rentable es, es el Shooter Multijugador ("d2"), ganando en la mayoría de criterios. Por otro lado, podemos ver que en cuanto a costes, parece que la que menos coste necesita es el juego de Estrategia ("d3"), aunque sin tanta diferencia ya que en dos de los criterios en los que gana, comparte esta posición con otros juegos. Por lo que, si yo fuese el encargado de recomendar a la empresa la realización de un juego u otro, le recomendaría el Shooter Multijugador ("d2").
 
 
-```{r}
+###Enunciado problema 2:
+Una familia está considerando cambiar su sistema de calefacción para el invierno. Tienen cuatro opciones: calefacción eléctrica, calefacción a gas, caldera de leña y bomba de calor. Dependiendo de las condiciones climáticas (invierno suave, invierno moderado, invierno frío o invierno muy frío
+), los costos esperados en euros para todo el invierno son los siguientes:
 
+```{r}
+crea.tablaX = function(vector_matporfilas,numalternativas=3,numestados=4) {
+
+  X = matrix(vector_matporfilas,nrow=numalternativas,ncol=numestados,byrow=TRUE)
+  colnames(X) = paste('e',1:numestados,sep='');
+  rownames(X) = paste('d',1:numalternativas,sep='');
+  return(X);
+
+}
+X = matrix(c(400,420,450,520,300,320,370,480,220,320,400,450,250,300,380,500),nrow=4,ncol=4,byrow=TRUE)
+colnames(X)=c('e1','e2','e3','e4')
+rownames(X)=c('Electrica','Gas','Caldera de leña','Bomba de Calor')
+X
 ```
+
+La familia desea tomar la mejor decisión basándose solo en los costos esperados. ¿Por cuál sistema de calefacción deberían apostar?
+
+Para saber cuál sistema es más rentable, realizaremos todos los criterios sobre nuestros datos:
+
+```{r}
+tb02=crea.tablaX(c(400,420,450,520,300,320,370,480,220,320,400,450,250,300,380,500), numalternativas = 4, numestados = 4)
+
+tb02
+```
+```{r}
+criterio.Todos(tb02,0.4,F)
+```
+Pues, como podemos ver en los resultados, la solución más económica para esta familia es la "d3", correspondiente a la Caldera de Leña, ya que es la más destacada en todos los criterios. 
