@@ -1,0 +1,42 @@
+---
+title: "Resolución Problemas"
+author: "Marcos Palomino Rodríguez"
+date: "2024-10-14"
+output:
+  pdf_document: default
+  html_document: default
+---
+Enunciado Problema 1:
+Una empresa de desarrollo de videojuegos está considerando lanzar un nuevo juego al mercado. El juego puede enfocarse en cuatro géneros distintos: un RPG de mundo abierto, un shooter multijugador, un juego de estrategia por turnos y un juego deportivo. Los beneficios esperados, en millones de euros en el año siguiente al lanzamiento, dependiendo de las condiciones del mercado, son las siguientes:
+
+```{r}
+crea.tablaX = function(vector_matporfilas,numalternativas=3,numestados=4) {
+
+  X = matrix(vector_matporfilas,nrow=numalternativas,ncol=numestados,byrow=TRUE)
+  colnames(X) = paste('e',1:numestados,sep='');
+  rownames(X) = paste('d',1:numalternativas,sep='');
+  return(X);
+
+}
+X = matrix(c(35,25,26,24,32,29,28,28,31,32,30,25,33,30,24,29),nrow=4,ncol=4,byrow=TRUE)
+colnames(X)=c('e1','e2','e3','e4')
+rownames(X)=c('RPG','Shooter','Estrategia','Deportivo')
+X
+```
+
+Por otro lado, esta sería la tabla que representa los costes, en millones de euros, esperados en el próximo año:
+
+```{r}
+X = matrix(c(11,6,6,10,7,8,6,6,5,10,7,8),nrow=4,ncol=3,byrow=TRUE)
+colnames(X)=c('e1','e2','e3')
+rownames(X)=c('RPG','Shooter','Estrategia','Deportivo')
+X
+```
+
+¿Cuál sería la opción que le recomendaría a la empresa?
+
+
+
+```{r}
+
+```
